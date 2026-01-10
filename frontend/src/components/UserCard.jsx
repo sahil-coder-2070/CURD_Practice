@@ -19,9 +19,6 @@ const UserCard = ({ users, setUsers }) => {
       }
     };
 
-    const fileInterval = setInterval(() => {
-      clearInterval(fileInterval)
-    }, 1000);
     userData();
 
   }, []);
@@ -38,6 +35,11 @@ const UserCard = ({ users, setUsers }) => {
         const errorData = await res.json();
         throw new Error("Error", errorData);
       }
+      console.log(users);
+
+      setUsers((prev) => prev.filter((user) => user.id !== id))
+
+
       console.log(`Item with ID ${id} deleted successfully`);
     } catch (error) {
       console.error(error);
