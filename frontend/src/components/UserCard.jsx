@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-const UserCard = () => {
-  const [users, setUsers] = useState([]);
+const UserCard = ({ users, setUsers }) => {
+
 
   useEffect(() => {
     const userData = async () => {
@@ -18,7 +18,12 @@ const UserCard = () => {
         console.error(error);
       }
     };
+
+    const fileInterval = setInterval(() => {
+      clearInterval(fileInterval)
+    }, 1000);
     userData();
+
   }, []);
 
   const handleClick = async (id) => {

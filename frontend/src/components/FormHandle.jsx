@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const FormHandle = () => {
+const FormHandle = ({ setUsers }) => {
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -25,6 +25,7 @@ const FormHandle = () => {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
+      setUsers((prev) => [...prev, data]);
       console.log("User created:", data);
     } catch (error) {
       console.error(error);
